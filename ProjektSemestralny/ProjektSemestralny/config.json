@@ -1,0 +1,3 @@
+{
+  "ConnectionString": "Database=Shop;Server=localhost\\SQLEXPRESS02;Trusted_Connection=True"
+}

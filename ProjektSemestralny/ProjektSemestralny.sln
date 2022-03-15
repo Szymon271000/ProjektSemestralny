@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjektSemestralny.GUI", "ProjektSemestralny\ProjektSemestralny.GUI.csproj", "{2656003A-6D15-494E-AB24-900BDF74252B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjektSemestralny.Logika", "ProjektSemestralny.Logika\ProjektSemestralny.Logika.csproj", "{DE75B305-C29A-4BC6-94B7-6A765DB20E92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2656003A-6D15-494E-AB24-900BDF74252B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2656003A-6D15-494E-AB24-900BDF74252B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2656003A-6D15-494E-AB24-900BDF74252B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2656003A-6D15-494E-AB24-900BDF74252B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE75B305-C29A-4BC6-94B7-6A765DB20E92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE75B305-C29A-4BC6-94B7-6A765DB20E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE75B305-C29A-4BC6-94B7-6A765DB20E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE75B305-C29A-4BC6-94B7-6A765DB20E92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A03814DC-8355-4746-A1EE-1A829DCE691E}
+	EndGlobalSection
+EndGlobal
