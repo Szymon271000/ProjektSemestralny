@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjektSemestralny.Logika.Data.Models
 {
-    public class Item
+    public class Order
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public double Price { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
     }
 }
