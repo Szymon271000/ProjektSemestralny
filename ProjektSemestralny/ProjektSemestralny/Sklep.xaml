@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="Sklep" Height="450" Width="800">
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Zakupy">
+                <Grid>
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Koszyk">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Ustawienia">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

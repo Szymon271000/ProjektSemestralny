@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjektSemestralny.Logika.Data.Models
 {
-    public class Order
+    public class CategoryProducent
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; } = DateTime.Now;
-
-        public User User { get; set; }
-        public bool Paid { get; set; }
+        public Category Category { get; set; }
+        public Producent Producent { get; set; }
 
     }
 }

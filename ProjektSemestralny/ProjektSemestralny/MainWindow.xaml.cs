@@ -24,9 +24,8 @@ namespace ProjektSemestralny
         public MainWindow()
         {
             InitializeComponent();
-
-            var configuration = Configuration.GetConfiguration("config.json");
-            context = new ApplicationDBContext(configuration.ConnectionString);
+            
+            context = new ApplicationDBContext();
             shopRepository = new ShopRepository(context);
         }
     }
