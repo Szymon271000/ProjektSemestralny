@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-        Title="Rejestracja" Height="450" Width="800">
+        Title="Rejestracja" Height="450" Width="800" FontSize="28" Background="AliceBlue">
     <Grid>
-        
+        <Label Content="Sign up" HorizontalAlignment="Left" Height="58" Margin="348,16,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Content="Name" HorizontalAlignment="Left" Height="56" Margin="222,62,0,0" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="32" Margin="348,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <Label Content="Surname" HorizontalAlignment="Left" Height="48" Margin="222,118,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="SurnameBox" HorizontalAlignment="Left" Height="32" Margin="348,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <Label Content="Age" HorizontalAlignment="Left" Height="48" Margin="222,171,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="AgeBox" HorizontalAlignment="Left" Height="32" Margin="348,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <Label Content="Login" HorizontalAlignment="Left" Height="48" Margin="222,224,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="AgeBox_Copy" HorizontalAlignment="Left" Height="32" Margin="348,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <Label Content="Password" HorizontalAlignment="Left" Height="48" Margin="222,272,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="PasswordBox1" HorizontalAlignment="Left" Height="32" Margin="348,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <Label Content="Password again" HorizontalAlignment="Left" Height="48" Margin="141,325,0,0" VerticalAlignment="Top" Width="326"/>
+        <TextBox x:Name="PasswordBox2" HorizontalAlignment="Left" Height="32" Margin="348,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <Label Content="Address" HorizontalAlignment="Left" Height="48" Margin="234,376,0,0" VerticalAlignment="Top" Width="116"/>
+        <TextBox x:Name="AddressBox" HorizontalAlignment="Left" Height="32" Margin="348,384,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <Button Content="Add User" HorizontalAlignment="Left" Height="53" Margin="617,173,0,0" VerticalAlignment="Top" Width="141" Click="Button_Click"/>
+        <Button Content="Login" HorizontalAlignment="Left" Height="53" Margin="617,242,0,0" VerticalAlignment="Top" Width="141" Click="Button_Click"/>
     </Grid>
 </Window>
