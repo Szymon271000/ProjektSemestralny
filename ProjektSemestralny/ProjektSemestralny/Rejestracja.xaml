@@ -14,8 +14,8 @@
         <TextBox x:Name="SurnameBox" HorizontalAlignment="Left" Height="32" Margin="348,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
         <Label Content="Age" HorizontalAlignment="Left" Height="48" Margin="222,171,0,0" VerticalAlignment="Top" Width="128"/>
         <TextBox x:Name="AgeBox" HorizontalAlignment="Left" Height="32" Margin="348,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
-        <Label Content="Login" HorizontalAlignment="Left" Height="48" Margin="222,224,0,0" VerticalAlignment="Top" Width="128"/>
-        <TextBox x:Name="AgeBox_Copy" HorizontalAlignment="Left" Height="32" Margin="348,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <Label Content="Username" HorizontalAlignment="Left" Height="48" Margin="222,224,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="UsernameBox" HorizontalAlignment="Left" Height="32" Margin="348,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
         <Label Content="Password" HorizontalAlignment="Left" Height="48" Margin="222,272,0,0" VerticalAlignment="Top" Width="128"/>
         <TextBox x:Name="PasswordBox1" HorizontalAlignment="Left" Height="32" Margin="348,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
         <Label Content="Password again" HorizontalAlignment="Left" Height="48" Margin="141,325,0,0" VerticalAlignment="Top" Width="326"/>
