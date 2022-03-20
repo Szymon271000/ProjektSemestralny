@@ -19,5 +19,9 @@ namespace ProjektSemestralny.Logika.Data
         {
             return context.Items.ToList();
         }
+        public List<User> GetAllUsers()
+        {
+            return context.Users.ToList();
+        }
     }
 }

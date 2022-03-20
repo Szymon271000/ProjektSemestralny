@@ -28,6 +28,8 @@ namespace ProjektSemestralny.Logika.Data
                 );
         }
 
+
+
         public DbSet<Item> Items { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
 
