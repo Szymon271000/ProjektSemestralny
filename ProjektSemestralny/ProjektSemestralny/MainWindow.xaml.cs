@@ -52,18 +52,18 @@ namespace ProjektSemestralny
                 }
                 else
                 {
-                    if (PasswordBox.Text == string.Empty)
+                    if (PasswordBox.Password == string.Empty)
                     {
                         MessageBox.Show("Please insert your password");
                     }
-                    if (PasswordBox.Text != string.Empty && !CorrectPassword(PasswordBox.Text, user.PasswordHash, user.PasswordSalt))
+                    if (PasswordBox.Password != string.Empty && !CorrectPassword(PasswordBox.Password, user.PasswordHash, user.PasswordSalt))
                     {
                         MessageBox.Show("Wrong password");
                     }
                     else
                     {
                         MessageBox.Show($"Welcome {UsernameBox.Text} !");
-                        var sklep = new Sklep();
+                        var sklep = new Sklep(user);
                         sklep.ShowDialog();
                     }
                 }

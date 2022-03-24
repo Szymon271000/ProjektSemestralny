@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjektSemestralny.Logika.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace ProjektSemestralny
     /// </summary>
     public partial class Sklep : Window
     {
-        public Sklep()
+        private readonly User user;
+
+        public Sklep(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
     }
 }

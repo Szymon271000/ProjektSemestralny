@@ -35,79 +35,30 @@ namespace ProjektSemestralny
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-            bool blad = false;
-            if (NameBox.Text == string.Empty)
-            {
-                MessageBox.Show("Your name is required");
-                blad = true;
-            }
-            if (SurnameBox.Text == string.Empty)
-            {
-                MessageBox.Show("Your surname is required");
-                blad = true;
-            }
-            if (AgeBox.Text == string.Empty)
-            {
-                MessageBox.Show("Your age is required");
-                blad = true;
-            }
-            if (UsernameBox.Text == string.Empty)
-            {
-                MessageBox.Show("Username is required");
-                blad = true;
-            }
-            var user = context.Users.FirstOrDefault(x => x.Login == UsernameBox.Text);
-            if (user != null)
-            {
-                MessageBox.Show("This username already exists");
-                blad = true;
-            }
-            if (PasswordBox1.Text != PasswordBox2.Text)
-            {
-                MessageBox.Show("Insert the same password in the fieds");
-                blad = true;
-            }
-            if (PasswordBox1.Text == string.Empty)
-            {
-                MessageBox.Show("Insert a password");
-                blad = true;
-            }
-            if (PasswordBox2.Text == string.Empty)
-            {
-                MessageBox.Show("Insert again the password");
-                blad = true;
-            }
-            if (PasswordBox1.Text == PasswordBox2.Text && PasswordBox1.Text != string.Empty)
-            {
-                CreatePassword(PasswordBox1.Text, out byte[] passwordHash, out byte[] passwordSalt);
+
+            int.TryParse(AgeBox.Text, out int age);
                 User u1 = new User()
                 {
                     Name = NameBox.Text,
                     Surname = SurnameBox.Text,
-                    Age = int.Parse(AgeBox.Text),
+                    Age = age,
                     Address = AddressBox.Text,
                     Login = UsernameBox.Text,
-                    PasswordHash = passwordHash,
-                    PasswordSalt = passwordSalt
                 };
-                context.Add(u1);
-                context.SaveChanges();
-                blad = false;
-            }
-            if (blad == false)
+            var result = shopRepository.AddUser(u1, PasswordBox1.Password, PasswordBox2.Password);
+            if (result.Success)
             {
                 MessageBox.Show($"Welcome {UsernameBox.Text} !");
-                var Sklep = new Sklep();
+                var Sklep = new Sklep(result.Data);
                 Sklep.ShowDialog();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(result.Message.Aggregate((x, y) => x + " " + y));
             }
         }
 
-        public void CreatePassword(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            HMACSHA512 hmac = new HMACSHA512();
-            passwordSalt = hmac.Key;
-            passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-        }
 
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
