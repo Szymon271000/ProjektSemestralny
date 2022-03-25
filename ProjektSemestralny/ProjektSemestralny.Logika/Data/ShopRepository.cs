@@ -82,7 +82,43 @@ namespace ProjektSemestralny.Logika.Data
 
         public Result<User> GetUser(string username, string password)
         {
-            return null;
+            Result<User> result = new Result<User> { Success = true };
+            if (username == string.Empty)
+            {
+                result.Message.Add("Please insert your username");
+                result.Success = false;
+            }
+            if (username != string.Empty)
+            {
+                var user = context.Users.FirstOrDefault(x => x.Login == username);
+                if (user == null)
+                {
+                    result.Message.Add("This user doesn't exist");
+                    result.Success = false;
+
+                }
+                else
+                {
+                    if (password == string.Empty)
+                    {
+                        result.Message.Add("Please insert your password");
+                        result.Success = false;
+
+                    }
+                    if (password != string.Empty && !CorrectPassword(password, user.PasswordHash, user.PasswordSalt))
+                    {
+                        result.Message.Add("Wrong password");
+                        result.Success = false;
+                    }
+                }
+                if (result.Success)
+                {
+                    CorrectPassword(password, user.PasswordHash, user.PasswordSalt);
+                    result.Data = user;
+                    result.Message.Add($"Welcome {username}");
+                }
+            }
+            return result;
         }
 
         public void CreatePassword(string password, out byte[] passwordHash, out byte[] passwordSalt)
@@ -90,6 +126,19 @@ namespace ProjektSemestralny.Logika.Data
             HMACSHA512 hmac = new HMACSHA512();
             passwordSalt = hmac.Key;
             passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+        }
+        public bool CorrectPassword(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            HMACSHA512 hmac = new HMACSHA512(passwordSalt);
+            byte[] passwordHash2 = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+            for (int i = 0; i < passwordHash.Length; i++)
+            {
+                if (passwordHash[i] != passwordHash2[i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

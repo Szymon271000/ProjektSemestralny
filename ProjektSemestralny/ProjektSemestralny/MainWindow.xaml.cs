@@ -39,49 +39,12 @@ namespace ProjektSemestralny
 
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
-            if (UsernameBox.Text == string.Empty)
+            var result = shopRepository.GetUser(UsernameBox.Text, PasswordBox.Password);
+            if (result.Success)
             {
-                MessageBox.Show("Please insert your username");
+                var sklep = new Sklep(result.Data);
+                sklep.ShowDialog();
             }
-            if (UsernameBox.Text != string.Empty)
-            {
-                var user = context.Users.FirstOrDefault(x => x.Login == UsernameBox.Text);
-                if (user == null)
-                {
-                    MessageBox.Show("This user doesn't exist");
-                }
-                else
-                {
-                    if (PasswordBox.Password == string.Empty)
-                    {
-                        MessageBox.Show("Please insert your password");
-                    }
-                    if (PasswordBox.Password != string.Empty && !CorrectPassword(PasswordBox.Password, user.PasswordHash, user.PasswordSalt))
-                    {
-                        MessageBox.Show("Wrong password");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Welcome {UsernameBox.Text} !");
-                        var sklep = new Sklep(user);
-                        sklep.ShowDialog();
-                    }
-                }
-            }
-        }
-
-        public bool CorrectPassword(string password, byte[] passwordHash, byte[] passwordSalt)
-        {
-            HMACSHA512 hmac = new HMACSHA512(passwordSalt);
-            byte[] passwordHash2 = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-            for (int i = 0; i < passwordHash.Length; i++)
-            {
-                if (passwordHash[i] != passwordHash2[i])
-                {
-                    return false;
-                }
-            }
-            return true;
         }
     }
 }
