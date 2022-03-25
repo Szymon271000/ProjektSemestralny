@@ -54,21 +54,21 @@ namespace ProjektSemestralny.Logika.Data
                 result.Message.Add("This username already exists");
                 result.Success = false;
             }
-            //if (PasswordBox1.Password != PasswordBox2.Password)
-            //{
-            //    MessageBox.Show("Insert the same password in the fieds");
-            //    blad = true;
-            //}
-            //if (PasswordBox1.Password == string.Empty)
-            //{
-            //    MessageBox.Show("Insert a password");
-            //    blad = true;
-            //}
-            //if (PasswordBox2.Password == string.Empty)
-            //{
-            //    MessageBox.Show("Insert again the password");
-            //    blad = true;
-            //}
+            if (password1 != password2)
+            {
+                result.Message.Add("Insert the same password in the fields");
+                result.Success = false;
+            }
+            if (password1 == string.Empty)
+            {
+                result.Message.Add("Insert a password");
+                result.Success = false;
+            }
+            if (password2 == string.Empty)
+            {
+                result.Message.Add("Insert again the password");
+                result.Success = false;
+            }
             if (result.Success)
             {
                 CreatePassword(password1, out byte[] passwordHash, out byte[] passwordSalt);
