@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjektSemestralny.Logika.Data;
 
 namespace ProjektSemestralny.Logika.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220331180313_cateprodu3")]
+    partial class cateprodu3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,23 +34,6 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 10,
-                            Name = "Mobiles"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Laptops"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Monitors"
-                        });
                 });
 
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.CategoryProducent", b =>
@@ -66,30 +51,14 @@ namespace ProjektSemestralny.Logika.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ProducentId");
-
                     b.ToTable("CategoryProducents");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CategoryId = 10,
-                            ProducentId = 50
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 11,
-                            ProducentId = 51
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 12,
-                            ProducentId = 52
+                            CategoryId = 1,
+                            ProducentId = 1
                         });
                 });
 
@@ -177,23 +146,6 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Producents");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 50,
-                            Name = "Samsung"
-                        },
-                        new
-                        {
-                            Id = 51,
-                            Name = "Motorola"
-                        },
-                        new
-                        {
-                            Id = 52,
-                            Name = "Panasonic"
-                        });
                 });
 
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.User", b =>
@@ -227,25 +179,6 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.CategoryProducent", b =>
-                {
-                    b.HasOne("ProjektSemestralny.Logika.Data.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProjektSemestralny.Logika.Data.Models.Producent", "Producent")
-                        .WithMany()
-                        .HasForeignKey("ProducentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Producent");
                 });
 
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.Item", b =>

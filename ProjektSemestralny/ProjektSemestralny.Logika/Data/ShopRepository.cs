@@ -72,6 +72,8 @@ namespace ProjektSemestralny.Logika.Data
             if (result.Success)
             {
                 CreatePassword(password1, out byte[] passwordHash, out byte[] passwordSalt);
+                u.PasswordSalt = passwordSalt;
+                u.PasswordHash = passwordHash;
                 context.Add(u);
                 context.SaveChanges();
                 result.Data = u;
@@ -105,7 +107,7 @@ namespace ProjektSemestralny.Logika.Data
                         result.Success = false;
 
                     }
-                    if (password != string.Empty && !CorrectPassword(password, user.PasswordHash, user.PasswordSalt))
+                    else if (!CorrectPassword(password, user.PasswordHash, user.PasswordSalt))
                     {
                         result.Message.Add("Wrong password");
                         result.Success = false;
@@ -113,7 +115,6 @@ namespace ProjektSemestralny.Logika.Data
                 }
                 if (result.Success)
                 {
-                    CorrectPassword(password, user.PasswordHash, user.PasswordSalt);
                     result.Data = user;
                     result.Message.Add($"Welcome {username}");
                 }
