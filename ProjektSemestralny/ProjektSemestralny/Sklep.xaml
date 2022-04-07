@@ -10,13 +10,12 @@
         <TabControl>
             <TabItem Header="Zakupy">
                 <Grid>
-                    
+                    <DataGrid Height="292" HorizontalAlignment="Center" Name="McDataGrid" VerticalAlignment="Center" Width="448"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Koszyk">
-                <Grid>
 
-                </Grid>
             </TabItem>
             <TabItem Header="Ustawienia">
                 <Grid>

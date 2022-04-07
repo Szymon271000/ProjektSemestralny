@@ -1,4 +1,5 @@
-﻿using ProjektSemestralny.Logika.Data.Models;
+﻿using ProjektSemestralny.Logika.Data;
+using ProjektSemestralny.Logika.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,17 @@ namespace ProjektSemestralny
     public partial class Sklep : Window
     {
         private readonly User user;
+        private ApplicationDBContext context;
+        private ShopRepository shopRepository;
 
         public Sklep(User user)
         {
             InitializeComponent();
             this.user = user;
+            context = new ApplicationDBContext();
+            shopRepository = new ShopRepository(context);
+            McDataGrid.ItemsSource = shopRepository.GetAllItems();
         }
+
     }
 }

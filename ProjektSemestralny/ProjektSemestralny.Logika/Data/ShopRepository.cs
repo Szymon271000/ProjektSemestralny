@@ -1,4 +1,5 @@
-﻿using ProjektSemestralny.Logika.Data.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjektSemestralny.Logika.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,13 @@ namespace ProjektSemestralny.Logika.Data
 
         public List<Item> GetAllItems()
         {
-            return context.Items.ToList();
+            return context.Items
+                .Include(x => x.CategoryProducent)
+                .ThenInclude(x => x.Category)
+                .Include(x => x.CategoryProducent)
+                .ThenInclude(x => x.Producent)
+                .ToList();
+
         }
         public List<User> GetAllUsers()
         {

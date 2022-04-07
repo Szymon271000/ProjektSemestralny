@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjektSemestralny.Logika.Data;
 
 namespace ProjektSemestralny.Logika.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220407173512_Items")]
+    partial class Items
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,16 +119,6 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.HasIndex("CategoryProducentId");
 
                     b.ToTable("Items");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryProducentId = 1,
-                            Description = "Samsung's fastest, most powerful chip ever. That means, a faster CPU and GPU compared to Galaxy S21 Ultra. It’s an epic leap for smartphone technology.",
-                            Name = "Galaxy S22 Ultra",
-                            Price = 1199.0
-                        });
                 });
 
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.Order", b =>

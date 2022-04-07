@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,9 @@ namespace ProjektSemestralny.Logika.Data.Models
 
         public string Description { get; set; }
         public CategoryProducent CategoryProducent { get; set; }
+
+        [ForeignKey("CategoryProducent")]
+        public int CategoryProducentId { get; set; }
 
     }
 }

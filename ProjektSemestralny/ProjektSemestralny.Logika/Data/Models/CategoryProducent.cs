@@ -21,5 +21,9 @@ namespace ProjektSemestralny.Logika.Data.Models
         [ForeignKey("Producent")]
         public int ProducentId { get; set; }
 
+        public override string ToString()
+        {
+            return $"Category : {Id}, Producent: {Producent.Name}, Category: {Category.Name}";
+        }
     }
 }
