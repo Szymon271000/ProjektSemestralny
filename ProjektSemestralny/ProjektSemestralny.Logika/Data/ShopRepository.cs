@@ -148,5 +148,52 @@ namespace ProjektSemestralny.Logika.Data
             }
             return true;
         }
+
+        public Result<Order> CreateOrder(int userId, List<Item> items)
+        {
+            var user = context.Users.FirstOrDefault(x => x.Id == userId);
+            if(user == null)
+            {
+                return new Result<Order> { Message = { "User not found." } };
+            }
+
+            foreach (var item in items)
+            {
+                var it = context.Items.FirstOrDefault(x => x.Id == item.Id);
+                if(it == null)
+                {
+                    return new Result<Order> { Message = { "Item not found id=" + item.Id } };
+                }
+            }
+
+            var order = new Order
+            {
+                Paid = false,
+                User = user
+            };
+            context.Add(order);
+            foreach(var item in items)
+            {
+                var it = context.Items.FirstOrDefault(x => x.Id == item.Id);
+                var orderItem = new OrderItem
+                {
+                    Order = order,
+                    Product = it
+                };
+                context.Add(orderItem);
+            }
+            context.SaveChanges();
+            return new Result<Order> { Success = true, Data = order, Message = { "Order added!" } };
+        }
+
+        public List<Order> GetAllOrders(int userId)
+        {
+            return context.Orders.Include(x => x.User).Where(x => x.User.Id == userId).ToList();
+        }
+
+        public List<Item> GetAllItems(int orderId)
+        {
+            return null;
+        }
     }
 }

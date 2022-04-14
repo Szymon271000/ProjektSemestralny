@@ -40,13 +40,11 @@ namespace ProjektSemestralny.Logika.Data
                 );
 
             modelBuilder.Entity<Item>().HasData(
-                new Item { Id = 1, Name = "Galaxy S22 Ultra", Description = "Samsung's fastest, most powerful chip ever. That means, a faster CPU and GPU compared to Galaxy S21 Ultra. It’s an epic leap for smartphone technology.", Price = 1199.00, CategoryProducentId = 1 }
+                new Item { Id = 1, Name = "Galaxy S22 Ultra", Description = "Samsung's fastest, most powerful chip ever. That means, a faster CPU and GPU compared to Galaxy S21 Ultra. It’s an epic leap for smartphone technology.", Price = 1199.00, CategoryProducentId = 1 },
+                new Item { Id = 2, Name = "ATRIX 4G", Description = "Laptop dock for the Motorola ATRIX 4G for a more interactive computer-like experience from your smartphone", Price = 500, CategoryProducentId= 2 },
+                new Item { Id = 3, Name = "TH-75CQ2U 75 4K UHD Professional TV", Description = "6 Models of Entry-level Displays with 4K High-Definition Image Quality.", CategoryProducentId = 3 }
                 );
-
-
-
-
-        }
+                }
 
         public DbSet<Item> Items { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }

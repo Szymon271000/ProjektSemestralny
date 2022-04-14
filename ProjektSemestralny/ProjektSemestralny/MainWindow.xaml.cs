@@ -45,6 +45,10 @@ namespace ProjektSemestralny
                 var sklep = new Sklep(result.Data);
                 sklep.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show(result.Message.Aggregate((x, y) => x + " " + y));
+            }
         }
     }
 }
