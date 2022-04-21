@@ -188,12 +188,24 @@ namespace ProjektSemestralny.Logika.Data
 
         public List<Order> GetAllOrders(int userId)
         {
-            return context.Orders.Include(x => x.User).Where(x => x.User.Id == userId).ToList();
+            return context.Orders.Include(x => x.User)
+                .Include(x => x.Items)
+                .ThenInclude(x => x.Product)
+                .ThenInclude(x => x.CategoryProducent)
+                .Where(x => x.User.Id == userId)
+                .ToList();
         }
 
-        public List<Item> GetAllItems(int orderId)
+        public bool AddPayment(int orderId)
         {
-            return null;
+            var order = context.Orders.FirstOrDefault(x => x.Id == orderId);
+            if(order == null)
+            {
+                return false;
+            }
+            order.Paid = true;
+            context.SaveChanges();
+            return true;
         }
     }
 }

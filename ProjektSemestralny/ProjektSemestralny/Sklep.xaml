@@ -32,6 +32,16 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header ="Zamówienia">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="0.8*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="OrderGrid"  Grid.Row="0" Margin="30,0,30,0" SelectionChanged="OrderGrid_Selected"/>
+                    <ListBox x:Name="OrderItems" Grid.Row="1" Margin="30,0,30,0"></ListBox>
+                </Grid>
+            </TabItem>
             <Button Content="Button"/>
         </TabControl>
     </Grid>

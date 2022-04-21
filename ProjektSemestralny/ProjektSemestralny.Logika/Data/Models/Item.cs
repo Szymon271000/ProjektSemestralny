@@ -19,5 +19,9 @@ namespace ProjektSemestralny.Logika.Data.Models
         [ForeignKey("CategoryProducent")]
         public int CategoryProducentId { get; set; }
 
+        public override string ToString()
+        {
+            return $"{Id} {Name} {Price}";
+        }
     }
 }

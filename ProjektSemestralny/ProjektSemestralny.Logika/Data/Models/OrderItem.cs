@@ -11,5 +11,10 @@ namespace ProjektSemestralny.Logika.Data.Models
         public int Id { get; set; }
         public Order Order { get; set; }
         public Item Product { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Product.Name}";
+        }
     }
 }

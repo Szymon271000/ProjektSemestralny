@@ -35,6 +35,7 @@ namespace ProjektSemestralny
             shopRepository = new ShopRepository(context);
             
             McDataGrid.ItemsSource = shopRepository.GetAllItems();
+            OrderGrid.ItemsSource = shopRepository.GetAllOrders(user.Id);
             
         }
 
@@ -71,6 +72,17 @@ namespace ProjektSemestralny
             else
             {
                 MessageBox.Show("You have no items in basket.");
+            }
+        }
+        private void OrderGrid_Selected(object sender, RoutedEventArgs e)
+        {
+            var selected = OrderGrid.SelectedItem;
+            if(selected is Order order)
+            {
+                OrderItems.ItemsSource = order.Items.Select(x => x.Product.Name).ToList();
+
+                //shopRepository.AddPayment(order.Id);
+                //OrderGrid.ItemsSource = shopRepository.GetAllOrders(user.Id);
             }
         }
     }

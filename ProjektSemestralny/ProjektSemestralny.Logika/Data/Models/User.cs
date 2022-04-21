@@ -19,5 +19,9 @@ namespace ProjektSemestralny.Logika.Data.Models
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
 
+        public override string ToString()
+        {
+            return $"{Login}";
+        }
     }
 }
