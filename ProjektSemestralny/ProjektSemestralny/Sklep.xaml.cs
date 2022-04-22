@@ -80,9 +80,16 @@ namespace ProjektSemestralny
             if(selected is Order order)
             {
                 OrderItems.ItemsSource = order.Items.Select(x => x.Product.Name).ToList();
+            }
+        }
 
-                //shopRepository.AddPayment(order.Id);
-                //OrderGrid.ItemsSource = shopRepository.GetAllOrders(user.Id);
+        private void BuyButton(object sender, RoutedEventArgs e)
+        {
+            var selected = OrderGrid.SelectedItem;
+            if (selected is Order order)
+            {
+                shopRepository.AddPayment(order.Id);
+                OrderGrid.ItemsSource = shopRepository.GetAllOrders(user.Id);
             }
         }
     }
