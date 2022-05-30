@@ -10,8 +10,8 @@ using ProjektSemestralny.Logika.Data;
 namespace ProjektSemestralny.Logika.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220331180119_cateprodu2")]
-    partial class cateprodu2
+    [Migration("20220530173918_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,23 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 10,
+                            Name = "Mobiles"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Laptops"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Monitors"
+                        });
                 });
 
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.CategoryProducent", b =>
@@ -51,7 +68,31 @@ namespace ProjektSemestralny.Logika.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ProducentId");
+
                     b.ToTable("CategoryProducents");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 10,
+                            ProducentId = 50
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 11,
+                            ProducentId = 51
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 12,
+                            ProducentId = 52
+                        });
                 });
 
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.Item", b =>
@@ -61,7 +102,7 @@ namespace ProjektSemestralny.Logika.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoryProducentId")
+                    b.Property<int>("CategoryProducentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -78,6 +119,32 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.HasIndex("CategoryProducentId");
 
                     b.ToTable("Items");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryProducentId = 1,
+                            Description = "Samsung's fastest, most powerful chip ever. That means, a faster CPU and GPU compared to Galaxy S21 Ultra. It’s an epic leap for smartphone technology.",
+                            Name = "Galaxy S22 Ultra",
+                            Price = 1199.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryProducentId = 2,
+                            Description = "Laptop dock for the Motorola ATRIX 4G for a more interactive computer-like experience from your smartphone",
+                            Name = "ATRIX 4G",
+                            Price = 500.0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryProducentId = 3,
+                            Description = "6 Models of Entry-level Displays with 4K High-Definition Image Quality.",
+                            Name = "TH-75CQ2U 75 4K UHD Professional TV",
+                            Price = 0.0
+                        });
                 });
 
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.Order", b =>
@@ -138,6 +205,23 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Producents");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 50,
+                            Name = "Samsung"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Name = "Motorola"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Name = "Panasonic"
+                        });
                 });
 
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.User", b =>
@@ -173,11 +257,32 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.CategoryProducent", b =>
+                {
+                    b.HasOne("ProjektSemestralny.Logika.Data.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjektSemestralny.Logika.Data.Models.Producent", "Producent")
+                        .WithMany()
+                        .HasForeignKey("ProducentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Producent");
+                });
+
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.Item", b =>
                 {
                     b.HasOne("ProjektSemestralny.Logika.Data.Models.CategoryProducent", "CategoryProducent")
                         .WithMany()
-                        .HasForeignKey("CategoryProducentId");
+                        .HasForeignKey("CategoryProducentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CategoryProducent");
                 });
@@ -194,7 +299,7 @@ namespace ProjektSemestralny.Logika.Migrations
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.OrderItem", b =>
                 {
                     b.HasOne("ProjektSemestralny.Logika.Data.Models.Order", "Order")
-                        .WithMany()
+                        .WithMany("Items")
                         .HasForeignKey("OrderId");
 
                     b.HasOne("ProjektSemestralny.Logika.Data.Models.Item", "Product")
@@ -204,6 +309,11 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.Order", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

@@ -297,7 +297,7 @@ namespace ProjektSemestralny.Logika.Migrations
             modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.OrderItem", b =>
                 {
                     b.HasOne("ProjektSemestralny.Logika.Data.Models.Order", "Order")
-                        .WithMany()
+                        .WithMany("Items")
                         .HasForeignKey("OrderId");
 
                     b.HasOne("ProjektSemestralny.Logika.Data.Models.Item", "Product")
@@ -307,6 +307,11 @@ namespace ProjektSemestralny.Logika.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ProjektSemestralny.Logika.Data.Models.Order", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

@@ -58,8 +58,8 @@ namespace ProjektSemestralny.Logika.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryId = table.Column<int>(type: "int", nullable: true),
-                    ProducentId = table.Column<int>(type: "int", nullable: true)
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    ProducentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,13 +69,13 @@ namespace ProjektSemestralny.Logika.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CategoryProducents_Producents_ProducentId",
                         column: x => x.ProducentId,
                         principalTable: "Producents",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,7 +108,7 @@ namespace ProjektSemestralny.Logika.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CategoryProducentId = table.Column<int>(type: "int", nullable: true)
+                    CategoryProducentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -118,7 +118,7 @@ namespace ProjektSemestralny.Logika.Migrations
                         column: x => x.CategoryProducentId,
                         principalTable: "CategoryProducents",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -146,6 +146,56 @@ namespace ProjektSemestralny.Logika.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 10, "Mobiles" },
+                    { 11, "Laptops" },
+                    { 12, "Monitors" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Producents",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 50, "Samsung" },
+                    { 51, "Motorola" },
+                    { 52, "Panasonic" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "CategoryProducents",
+                columns: new[] { "Id", "CategoryId", "ProducentId" },
+                values: new object[] { 1, 10, 50 });
+
+            migrationBuilder.InsertData(
+                table: "CategoryProducents",
+                columns: new[] { "Id", "CategoryId", "ProducentId" },
+                values: new object[] { 2, 11, 51 });
+
+            migrationBuilder.InsertData(
+                table: "CategoryProducents",
+                columns: new[] { "Id", "CategoryId", "ProducentId" },
+                values: new object[] { 3, 12, 52 });
+
+            migrationBuilder.InsertData(
+                table: "Items",
+                columns: new[] { "Id", "CategoryProducentId", "Description", "Name", "Price" },
+                values: new object[] { 1, 1, "Samsung's fastest, most powerful chip ever. That means, a faster CPU and GPU compared to Galaxy S21 Ultra. It’s an epic leap for smartphone technology.", "Galaxy S22 Ultra", 1199.0 });
+
+            migrationBuilder.InsertData(
+                table: "Items",
+                columns: new[] { "Id", "CategoryProducentId", "Description", "Name", "Price" },
+                values: new object[] { 2, 2, "Laptop dock for the Motorola ATRIX 4G for a more interactive computer-like experience from your smartphone", "ATRIX 4G", 500.0 });
+
+            migrationBuilder.InsertData(
+                table: "Items",
+                columns: new[] { "Id", "CategoryProducentId", "Description", "Name", "Price" },
+                values: new object[] { 3, 3, "6 Models of Entry-level Displays with 4K High-Definition Image Quality.", "TH-75CQ2U 75 4K UHD Professional TV", 0.0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CategoryProducents_CategoryId",
