@@ -29,6 +29,25 @@
             </TabItem>
             <TabItem Header="Ustawienia">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="134*"/>
+                        <ColumnDefinition Width="661*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Name" HorizontalAlignment="Left" Height="44" Margin="110,17,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
+                    <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="32" Margin="216,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1"/>
+                    <Label Content="Surname" HorizontalAlignment="Left" Height="48" Margin="88,73,0,0" VerticalAlignment="Top" Width="128" Grid.Column="1"/>
+                    <TextBox x:Name="SurnameBox" HorizontalAlignment="Left" Height="32" Margin="216,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1"/>
+                    <Label Content="Age" HorizontalAlignment="Left" Height="46" Margin="110,119,0,0" VerticalAlignment="Top" Width="64" Grid.Column="1"/>
+                    <TextBox x:Name="AgeBox" HorizontalAlignment="Center" Height="31" Margin="0,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" Grid.Column="1"/>
+                    <Label Content="Username" HorizontalAlignment="Left" Height="47" Margin="76,175,0,0" VerticalAlignment="Top" Width="138" Grid.Column="1"/>
+                    <TextBox x:Name="UsernameBox" HorizontalAlignment="Left" Height="31" Margin="216,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1"/>
+                    <Label Content="Password" HorizontalAlignment="Left" Height="48" Margin="84,225,0,0" VerticalAlignment="Top" Width="128" Grid.Column="1"/>
+                    <PasswordBox x:Name="PasswordBox1" HorizontalAlignment="Left" Height="32" Margin="216,227,0,0" VerticalAlignment="Top" Width="231" Grid.Column="1"/>
+                    <Label Content="Password again" HorizontalAlignment="Left" Height="48" Margin="76,285,0,0" VerticalAlignment="Top" Width="119" Grid.Column="1"/>
+                    <PasswordBox x:Name="PasswordBox2" HorizontalAlignment="Left" Height="32" Margin="214,287,0,0" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
+                    <Label Content="Address" HorizontalAlignment="Left" Height="47" Margin="88,327,0,0" VerticalAlignment="Top" Width="116" Grid.Column="1"/>
+                    <TextBox x:Name="AddressBox" HorizontalAlignment="Left" Height="32" Margin="214,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
+                    <Button x:Name="ChangeSettingsButton" Content="Change settings" HorizontalAlignment="Left" Height="53" Margin="484,173,0,0" VerticalAlignment="Top" Width="141" Grid.Column="1" Click="ChangeSettingsButton_Click"/>
 
                 </Grid>
             </TabItem>

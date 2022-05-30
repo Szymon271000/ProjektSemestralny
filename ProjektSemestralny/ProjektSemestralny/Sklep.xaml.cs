@@ -36,7 +36,11 @@ namespace ProjektSemestralny
             
             McDataGrid.ItemsSource = shopRepository.GetAllItems();
             OrderGrid.ItemsSource = shopRepository.GetAllOrders(user.Id);
-            
+            NameBox.Text = user.Name;
+            SurnameBox.Text = user.Surname;
+            AgeBox.Text = user.Age.ToString();
+            UsernameBox.Text = user.Login;
+            AddressBox.Text = user.Address;
         }
 
         public void AddBought(Item item)
@@ -76,6 +80,7 @@ namespace ProjektSemestralny
         }
         private void OrderGrid_Selected(object sender, RoutedEventArgs e)
         {
+            OrderGrid.ItemsSource = shopRepository.GetAllOrders(user.Id);
             var selected = OrderGrid.SelectedItem;
             if(selected is Order order)
             {
@@ -90,6 +95,28 @@ namespace ProjektSemestralny
             {
                 shopRepository.AddPayment(order.Id);
                 OrderGrid.ItemsSource = shopRepository.GetAllOrders(user.Id);
+            }
+        }
+
+        private void ChangeSettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            int.TryParse(AgeBox.Text, out int age);
+            User u1 = new User()
+            {
+                Name = NameBox.Text,
+                Surname = SurnameBox.Text,
+                Age = age,
+                Address = AddressBox.Text,
+                Login = UsernameBox.Text,
+            };
+            var result = shopRepository.UpdateUser(u1, user.Id, PasswordBox1.Password, PasswordBox2.Password);
+            if (result.Success)
+            {
+                MessageBox.Show($"Edited {UsernameBox.Text} !");
+            }
+            else
+            {
+                MessageBox.Show(result.Message.Aggregate((x, y) => x + " " + y));
             }
         }
     }

@@ -32,6 +32,80 @@ namespace ProjektSemestralny.Logika.Data
             return context.Users.ToList();
         }
 
+        public Result<User> UpdateUser(User u, int userId, string password1, string password2)
+        {
+            Result<User> result = new Result<User> { Success = true };
+            var user = context.Users.FirstOrDefault(x => x.Id == userId);
+            if (user == null)
+            {
+                result.Success = false;
+                result.Message.Add("This user does not exist");
+                return result;
+            }
+            
+            if (u.Name != string.Empty)
+            {
+                user.Name = u.Name;
+            }
+            if (u.Surname != string.Empty)
+            {
+                user.Surname = u.Surname;
+            }
+            if (u.Age >= 0)
+            {
+                user.Age = u.Age;
+            }
+            if (u.Login != string.Empty)
+            {
+                var existUser = context.Users.FirstOrDefault(x => x.Login == u.Login);
+                if (existUser != null)
+                {
+                    result.Message.Add("This username already exists");
+                    result.Success = false;
+                    return result;
+                }
+
+                user.Login = u.Login;
+            }
+            
+            if(password1 != string.Empty)
+            {
+                if (password1 != password2)
+                {
+                    result.Message.Add("Insert the same password in the fields");
+                    result.Success = false;
+                }
+                else if (password1 == string.Empty)
+                {
+                    result.Message.Add("Insert a password");
+                    result.Success = false;
+                }
+                else if (password2 == string.Empty)
+                {
+                    result.Message.Add("Insert again the password");
+                    result.Success = false;
+                }
+                else
+                {
+                    CreatePassword(password1, out byte[] passwordHash, out byte[] passwordSalt);
+                    user.PasswordSalt = passwordSalt;
+                    user.PasswordHash = passwordHash;
+                }
+            }
+
+            if (u.Address != string.Empty)
+            {
+                user.Address = u.Address;
+            }
+
+            if (result.Success)
+            {
+                context.SaveChanges();
+                result.Data = u;
+                result.Message.Add("Your account was edited");
+            }
+            return result;
+        }
         public Result<User> AddUser(User u, string password1, string password2)
         {
             Result<User> result = new Result<User> { Success = true };
