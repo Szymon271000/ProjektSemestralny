@@ -8,7 +8,7 @@
         Title="Sklep" Height="450" Width="800">
     <Grid>
         <TabControl>
-            <TabItem Header="Zakupy">
+            <TabItem Header="Shoppings">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="68*"/>
@@ -20,14 +20,14 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Koszyk">
+            <TabItem Header="Basket">
                 <Grid>
                     <DataGrid Height="292" HorizontalAlignment="Left" Name="Bought" VerticalAlignment="Center" Width="670" Grid.ColumnSpan="3" Margin="62,0,0,0"/>
                     <Button Content="Order now" HorizontalAlignment="Left" Height="23" Margin="604,316,0,0" VerticalAlignment="Top" Width="111" Click="Button_Click_1"/>
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Ustawienia">
+            <TabItem Header="Settings">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="134*"/>
@@ -38,11 +38,11 @@
                     <Label Content="Surname" HorizontalAlignment="Left" Height="48" Margin="88,73,0,0" VerticalAlignment="Top" Width="128" Grid.Column="1"/>
                     <TextBox x:Name="SurnameBox" HorizontalAlignment="Left" Height="32" Margin="216,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1"/>
                     <Label Content="Age" HorizontalAlignment="Left" Height="46" Margin="110,119,0,0" VerticalAlignment="Top" Width="64" Grid.Column="1"/>
-                    <TextBox x:Name="AgeBox" HorizontalAlignment="Center" Height="31" Margin="0,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" Grid.Column="1"/>
+                    <TextBox x:Name="AgeBox" HorizontalAlignment="Left" Height="31" Margin="217,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" Grid.Column="1"/>
                     <Label Content="Username" HorizontalAlignment="Left" Height="47" Margin="76,175,0,0" VerticalAlignment="Top" Width="138" Grid.Column="1"/>
-                    <TextBox x:Name="UsernameBox" HorizontalAlignment="Left" Height="31" Margin="216,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1"/>
+                    <TextBox x:Name="UsernameBox" HorizontalAlignment="Left" Height="31" Margin="216,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236" Grid.Column="1"/>
                     <Label Content="Password" HorizontalAlignment="Left" Height="48" Margin="84,225,0,0" VerticalAlignment="Top" Width="128" Grid.Column="1"/>
-                    <PasswordBox x:Name="PasswordBox1" HorizontalAlignment="Left" Height="32" Margin="216,227,0,0" VerticalAlignment="Top" Width="231" Grid.Column="1"/>
+                    <PasswordBox x:Name="PasswordBox1" HorizontalAlignment="Left" Height="32" Margin="216,227,0,0" VerticalAlignment="Top" Width="236" Grid.Column="1"/>
                     <Label Content="Password again" HorizontalAlignment="Left" Height="48" Margin="76,285,0,0" VerticalAlignment="Top" Width="119" Grid.Column="1"/>
                     <PasswordBox x:Name="PasswordBox2" HorizontalAlignment="Left" Height="32" Margin="214,287,0,0" VerticalAlignment="Top" Width="238" Grid.Column="1"/>
                     <Label Content="Address" HorizontalAlignment="Left" Height="47" Margin="88,327,0,0" VerticalAlignment="Top" Width="116" Grid.Column="1"/>
@@ -51,7 +51,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header ="Zamówienia">
+            <TabItem Header ="Orders">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
